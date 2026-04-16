@@ -298,7 +298,8 @@ async function sendToBuffer() {
       body: JSON.stringify({ action: 'profiles', accessToken: bufferKey })
     });
     if (!profilesResp.ok) throw new Error('Clé Buffer invalide ou accès refusé.');
-    const profiles = await profilesResp.json();
+    const profilesData = await profilesResp.json();
+    const profiles = Array.isArray(profilesData) ? profilesData : Object.values(profilesData);
     if (!profiles || profiles.length === 0) throw new Error('Aucun réseau connecté dans Buffer.');
 
     let sent = 0;
