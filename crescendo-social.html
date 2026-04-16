@@ -17,108 +17,57 @@
     --vert: #26a875;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--noir);
-    color: var(--blanc);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-    padding: 2rem;
-    max-width: 860px;
-    margin: 0 auto;
-  }
+  body { background: var(--noir); color: var(--blanc); font-family: 'DM Sans', sans-serif; font-weight: 300; min-height: 100vh; padding: 2rem; max-width: 860px; margin: 0 auto; }
   header { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--gris); }
   .logo-bar { width: 4px; height: 48px; background: var(--rouge); }
   header h1 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; }
   header h1 span { color: var(--rouge); font-style: italic; }
   header p { font-size: 0.78rem; color: var(--gris-clair); margin-top: 0.2rem; letter-spacing: 0.08em; text-transform: uppercase; }
-
   .input-zone { background: var(--gris-fonce); border: 1px solid var(--gris); border-radius: 4px; padding: 1.5rem; margin-bottom: 1rem; }
   .input-zone label { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--or); margin-bottom: 0.6rem; }
   .input-zone label + label { margin-top: 0.8rem; }
-
-  input[type="text"], input[type="password"] {
-    width: 100%; background: var(--noir); border: 1px solid var(--gris); border-radius: 3px;
-    color: var(--blanc); font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
-    padding: 0.7rem 1rem; outline: none; transition: border-color 0.2s;
-  }
+  input[type="text"], input[type="password"] { width: 100%; background: var(--noir); border: 1px solid var(--gris); border-radius: 3px; color: var(--blanc); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; padding: 0.7rem 1rem; outline: none; transition: border-color 0.2s; }
   input:focus { border-color: var(--rouge); }
   input::placeholder { color: var(--gris-clair); }
-
   .key-saved { font-size: 0.72rem; color: #4caf50; margin-top: 0.4rem; display: none; }
-
-  textarea {
-    width: 100%; background: var(--noir); border: 1px solid var(--gris); border-radius: 3px;
-    color: var(--blanc); font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
-    line-height: 1.6; padding: 0.7rem 1rem; outline: none; resize: vertical;
-    min-height: 140px; transition: border-color 0.2s;
-  }
+  textarea { width: 100%; background: var(--noir); border: 1px solid var(--gris); border-radius: 3px; color: var(--blanc); font-family: 'DM Sans', sans-serif; font-size: 0.88rem; line-height: 1.6; padding: 0.7rem 1rem; outline: none; resize: vertical; min-height: 140px; transition: border-color 0.2s; }
   textarea:focus { border-color: var(--rouge); }
   textarea::placeholder { color: var(--gris-clair); }
-
   .two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
-  @media (max-width: 600px) { .two-cols { grid-template-columns: 1fr; } }
-
-  button.generate {
-    width: 100%; background: var(--rouge); color: white; border: none; border-radius: 3px;
-    font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500;
-    letter-spacing: 0.08em; text-transform: uppercase; padding: 0.85rem;
-    cursor: pointer; margin-top: 0.8rem; transition: background 0.2s;
-  }
+  button.generate { width: 100%; background: var(--rouge); color: white; border: none; border-radius: 3px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.85rem; cursor: pointer; margin-top: 0.8rem; transition: background 0.2s; }
   button.generate:hover { background: #a50d26; }
   button.generate:disabled { background: var(--gris); cursor: not-allowed; }
-
-  button.send-buffer {
-    width: 100%; background: var(--vert); color: white; border: none; border-radius: 3px;
-    font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500;
-    letter-spacing: 0.08em; text-transform: uppercase; padding: 0.85rem;
-    cursor: pointer; margin-top: 1rem; transition: background 0.2s; display: none;
-  }
+  button.send-buffer { width: 100%; background: var(--vert); color: white; border: none; border-radius: 3px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.85rem; cursor: pointer; margin-top: 1rem; transition: background 0.2s; display: none; }
   button.send-buffer:hover { background: #1e8a60; }
   button.send-buffer:disabled { background: var(--gris); cursor: not-allowed; }
-
   .status { font-size: 0.8rem; color: var(--or); margin-top: 0.8rem; min-height: 1.2em; font-style: italic; }
   .status.error { color: #e05050; font-style: normal; }
   .buffer-status { font-size: 0.8rem; color: var(--vert); margin-top: 0.6rem; min-height: 1.2em; font-style: italic; }
   .buffer-status.error { color: #e05050; font-style: normal; }
-
   .results { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
-
   .post-card { background: var(--gris-fonce); border: 1px solid var(--gris); border-radius: 4px; overflow: hidden; opacity: 0; transform: translateY(12px); transition: opacity 0.4s ease, transform 0.4s ease; }
   .post-card.visible { opacity: 1; transform: translateY(0); }
-
   .post-card-header { display: flex; justify-content: space-between; align-items: center; padding: 0.7rem 1rem; background: var(--gris); }
   .network-tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 500; display: flex; align-items: center; gap: 0.5rem; }
   .dot { width: 8px; height: 8px; border-radius: 50%; }
   .dot-li { background: #0077b5; }
   .dot-ig { background: #e1306c; }
   .dot-x  { background: #ffffff; }
-
   .char-count { font-size: 0.7rem; color: var(--gris-clair); }
   .char-count.warn { color: #e09050; }
   .char-count.over { color: #e05050; }
-
   .post-body { padding: 1rem; font-size: 0.88rem; line-height: 1.65; white-space: pre-wrap; min-height: 80px; outline: none; }
   .post-card-footer { display: flex; justify-content: flex-end; padding: 0.5rem 0.8rem; border-top: 1px solid var(--gris); }
-
-  button.copy-btn {
-    background: transparent; border: 1px solid var(--gris-clair); border-radius: 3px;
-    color: var(--gris-clair); font-family: 'DM Sans', sans-serif; font-size: 0.72rem;
-    letter-spacing: 0.06em; text-transform: uppercase; padding: 0.35rem 0.9rem;
-    cursor: pointer; transition: all 0.2s;
-  }
+  button.copy-btn { background: transparent; border: 1px solid var(--gris-clair); border-radius: 3px; color: var(--gris-clair); font-family: 'DM Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.35rem 0.9rem; cursor: pointer; transition: all 0.2s; }
   button.copy-btn:hover { border-color: var(--or); color: var(--or); }
   button.copy-btn.copied { border-color: #4caf50; color: #4caf50; }
-
   .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; vertical-align: middle; margin-right: 6px; }
   @keyframes spin { to { transform: rotate(360deg); } }
-
   .tip { font-size: 0.75rem; color: var(--gris-clair); margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--gris); line-height: 1.6; }
   .tip strong { color: var(--blanc); }
 </style>
 </head>
 <body>
-
 <header>
   <div class="logo-bar"></div>
   <div>
@@ -126,7 +75,6 @@
     <p>Générateur de posts — Module Pupitre</p>
   </div>
 </header>
-
 <div class="two-cols">
   <div class="input-zone">
     <label>Clé API Anthropic</label>
@@ -139,7 +87,6 @@
     <div class="key-saved" id="keySavedBuffer">✓ Mémorisée</div>
   </div>
 </div>
-
 <div class="input-zone">
   <label>URL de l'article (incluse dans les posts)</label>
   <input type="text" id="articleUrl" placeholder="https://www.crescendo-magazine.be/..." style="margin-bottom:0.8rem;" />
@@ -148,187 +95,90 @@
   <button class="generate" id="generateBtn" onclick="generate()">Générer les posts</button>
   <div class="status" id="status"></div>
 </div>
-
 <div class="results" id="results"></div>
-
-<button class="send-buffer" id="sendBufferBtn" onclick="sendToBuffer()">
-  ↗ Envoyer dans Buffer
-</button>
+<button class="send-buffer" id="sendBufferBtn" onclick="sendToBuffer()">↗ Envoyer dans Buffer</button>
 <div class="buffer-status" id="bufferStatus"></div>
-
-<div class="tip">
-  <strong>Conseils :</strong> Les posts sont éditables avant envoi. Buffer les met en file d'attente — vous validez les horaires depuis Buffer.
-</div>
-
+<div class="tip"><strong>Conseils :</strong> Les posts sont éditables avant envoi. Buffer les met en file d'attente.</div>
 <script>
 const NETWORKS = [
-  { id: 'linkedin', label: 'LinkedIn', dotClass: 'dot-li', maxChars: 3000, warnAt: 2500,
-    instruction: 'Post LinkedIn professionnel (400-600 caractères). Ton érudit mais accessible. Accroche sur l\'œuvre ou l\'artiste, pas sur "Crescendo". 3-5 hashtags pertinents. Inclure le lien.' },
-  { id: 'instagram', label: 'Instagram / Facebook', dotClass: 'dot-ig', maxChars: 2200, warnAt: 1800,
-    instruction: 'Post Instagram/Facebook (250-400 caractères). Ton chaleureux. Accroche émotionnelle. 5-8 hashtags dont #musiqueclassique #crescendomagazine. Lien en bio.' },
-  { id: 'x', label: 'X / Twitter', dotClass: 'dot-x', maxChars: 280, warnAt: 240,
-    instruction: 'Tweet (max 250 caractères, lien non compté). Formule percutante et directe. 1-2 hashtags max.' }
+  { id: 'linkedin', label: 'LinkedIn', dotClass: 'dot-li', maxChars: 3000, warnAt: 2500, instruction: "Post LinkedIn professionnel (400-600 caractères). Ton érudit mais accessible. Accroche sur l'oeuvre ou l'artiste. 3-5 hashtags. Inclure le lien." },
+  { id: 'instagram', label: 'Instagram / Facebook', dotClass: 'dot-ig', maxChars: 2200, warnAt: 1800, instruction: 'Post Instagram/Facebook (250-400 caractères). Ton chaleureux. 5-8 hashtags dont #musiqueclassique #crescendomagazine.' },
+  { id: 'x', label: 'X / Twitter', dotClass: 'dot-x', maxChars: 280, warnAt: 240, instruction: 'Tweet (max 250 caractères). Formule percutante. 1-2 hashtags max.' }
 ];
-
 let generatedPosts = {};
-
 window.addEventListener('load', () => {
   const ak = localStorage.getItem('crescendo_api_key');
   const bk = localStorage.getItem('crescendo_buffer_key');
   if (ak) { document.getElementById('apiKey').value = ak; document.getElementById('keySavedAnthropic').style.display = 'block'; }
   if (bk) { document.getElementById('bufferKey').value = bk; document.getElementById('keySavedBuffer').style.display = 'block'; }
 });
-
-document.getElementById('apiKey').addEventListener('blur', () => {
-  const k = document.getElementById('apiKey').value.trim();
-  if (k) { localStorage.setItem('crescendo_api_key', k); document.getElementById('keySavedAnthropic').style.display = 'block'; }
-});
-document.getElementById('bufferKey').addEventListener('blur', () => {
-  const k = document.getElementById('bufferKey').value.trim();
-  if (k) { localStorage.setItem('crescendo_buffer_key', k); document.getElementById('keySavedBuffer').style.display = 'block'; }
-});
-
-function setStatus(msg, isError = false) {
-  const el = document.getElementById('status');
-  el.textContent = msg;
-  el.className = 'status' + (isError ? ' error' : '');
-}
-
-function updateCharCount(id, text, max, warn) {
-  const el = document.getElementById('count-' + id);
-  if (!el) return;
-  const count = text.length;
-  el.textContent = count + ' / ' + max;
-  el.className = 'char-count' + (count > max ? ' over' : count > warn ? ' warn' : '');
-}
-
+document.getElementById('apiKey').addEventListener('blur', () => { const k = document.getElementById('apiKey').value.trim(); if (k) { localStorage.setItem('crescendo_api_key', k); document.getElementById('keySavedAnthropic').style.display = 'block'; } });
+document.getElementById('bufferKey').addEventListener('blur', () => { const k = document.getElementById('bufferKey').value.trim(); if (k) { localStorage.setItem('crescendo_buffer_key', k); document.getElementById('keySavedBuffer').style.display = 'block'; } });
+function setStatus(msg, isError=false) { const el=document.getElementById('status'); el.textContent=msg; el.className='status'+(isError?' error':''); }
+function updateCharCount(id, text, max, warn) { const el=document.getElementById('count-'+id); if(!el)return; const count=text.length; el.textContent=count+' / '+max; el.className='char-count'+(count>max?' over':count>warn?' warn':''); }
 async function generate() {
-  const apiKey = document.getElementById('apiKey').value.trim();
-  const url = document.getElementById('articleUrl').value.trim();
-  const text = document.getElementById('articleText').value.trim();
-  const btn = document.getElementById('generateBtn');
-  const resultsEl = document.getElementById('results');
-  const sendBtn = document.getElementById('sendBufferBtn');
-
-  if (!apiKey) { setStatus('Clé API Anthropic manquante.', true); return; }
-  if (!text) { setStatus('Collez le contenu de l\'article.', true); return; }
-
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span>Génération…';
-  setStatus('Envoi à Claude…');
-  resultsEl.innerHTML = '';
-  sendBtn.style.display = 'none';
-  generatedPosts = {};
-
-  const sys = `Tu es le community manager de Crescendo Magazine, la référence belge francophone de critique musicale classique. Style : précis, érudit, sans superlatifs creux. Réponds UNIQUEMENT en JSON valide sans markdown ni backticks. Format : {"linkedin":"...","instagram":"...","x":"..."}`;
-  const prompt = `Article Crescendo :\n${url ? 'URL : ' + url : ''}\n\n${text}\n\nGénère 3 posts :\n- LinkedIn : ${NETWORKS[0].instruction}\n- Instagram/Facebook : ${NETWORKS[1].instruction}\n- X/Twitter : ${NETWORKS[2].instruction}\n\nJSON uniquement.`;
-
+  const apiKey=document.getElementById('apiKey').value.trim();
+  const url=document.getElementById('articleUrl').value.trim();
+  const text=document.getElementById('articleText').value.trim();
+  const btn=document.getElementById('generateBtn');
+  const resultsEl=document.getElementById('results');
+  const sendBtn=document.getElementById('sendBufferBtn');
+  if(!apiKey){setStatus('Clé API Anthropic manquante.',true);return;}
+  if(!text){setStatus("Collez le contenu de l'article.",true);return;}
+  btn.disabled=true; btn.innerHTML='<span class="spinner"></span>Génération…';
+  setStatus('Envoi à Claude…'); resultsEl.innerHTML=''; sendBtn.style.display='none'; generatedPosts={};
+  const sys='Tu es le community manager de Crescendo Magazine, référence belge francophone de critique musicale classique. Style : précis, érudit. Réponds UNIQUEMENT en JSON valide sans markdown. Format : {"linkedin":"...","instagram":"...","x":"..."}';
+  const prompt='Article Crescendo :\n'+(url?'URL : '+url:'')+'\n\n'+text+'\n\nGénère 3 posts :\n- LinkedIn : '+NETWORKS[0].instruction+'\n- Instagram : '+NETWORKS[1].instruction+'\n- X : '+NETWORKS[2].instruction+'\n\nJSON uniquement.';
   try {
-    const resp = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' },
-      body: JSON.stringify({ model: 'claude-opus-4-5', max_tokens: 1500, system: sys, messages: [{ role: 'user', content: prompt }] })
-    });
-    if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || 'Erreur API'); }
-    const data = await resp.json();
-    const posts = JSON.parse(data.content[0].text.replace(/```json|```/g, '').trim());
-    generatedPosts = posts;
-
-    NETWORKS.forEach((net, i) => {
-      const t = posts[net.id] || '';
-      const card = document.createElement('div');
-      card.className = 'post-card';
-      card.innerHTML = `
-        <div class="post-card-header">
-          <div class="network-tag"><div class="dot ${net.dotClass}"></div>${net.label}</div>
-          <div class="char-count" id="count-${net.id}">${t.length} / ${net.maxChars}</div>
-        </div>
-        <div class="post-body" id="body-${net.id}" contenteditable="true">${t}</div>
-        <div class="post-card-footer">
-          <button class="copy-btn" id="btn-${net.id}" onclick="copyPost('${net.id}')">Copier</button>
-        </div>`;
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-opus-4-5',max_tokens:1500,system:sys,messages:[{role:'user',content:prompt}]})});
+    if(!resp.ok){const e=await resp.json();throw new Error(e.error?.message||'Erreur API');}
+    const data=await resp.json();
+    const posts=JSON.parse(data.content[0].text.replace(/```json|```/g,'').trim());
+    generatedPosts=posts;
+    NETWORKS.forEach((net,i)=>{
+      const t=posts[net.id]||'';
+      const card=document.createElement('div'); card.className='post-card';
+      card.innerHTML='<div class="post-card-header"><div class="network-tag"><div class="dot '+net.dotClass+'"></div>'+net.label+'</div><div class="char-count" id="count-'+net.id+'">'+t.length+' / '+net.maxChars+'</div></div><div class="post-body" id="body-'+net.id+'" contenteditable="true">'+t+'</div><div class="post-card-footer"><button class="copy-btn" id="btn-'+net.id+'" onclick="copyPost(\''+net.id+'\')">Copier</button></div>';
       resultsEl.appendChild(card);
-      setTimeout(() => { card.classList.add('visible'); updateCharCount(net.id, t, net.maxChars, net.warnAt); }, i * 120);
-      card.querySelector('#body-' + net.id).addEventListener('input', function() {
-        generatedPosts[net.id] = this.innerText;
-        updateCharCount(net.id, this.innerText, net.maxChars, net.warnAt);
-      });
+      setTimeout(()=>{card.classList.add('visible');updateCharCount(net.id,t,net.maxChars,net.warnAt);},i*120);
+      card.querySelector('#body-'+net.id).addEventListener('input',function(){generatedPosts[net.id]=this.innerText;updateCharCount(net.id,this.innerText,net.maxChars,net.warnAt);});
     });
-
-    setStatus('✓ Posts générés — modifiables avant envoi.');
-    sendBtn.style.display = 'block';
-  } catch(e) {
-    setStatus('Erreur : ' + e.message, true);
-  }
-  btn.disabled = false;
-  btn.textContent = 'Générer les posts';
+    setStatus('✓ Posts générés — modifiables avant envoi.'); sendBtn.style.display='block';
+  } catch(e){setStatus('Erreur : '+e.message,true);}
+  btn.disabled=false; btn.textContent='Générer les posts';
 }
-
 async function copyPost(id) {
-  const body = document.getElementById('body-' + id);
-  const btn = document.getElementById('btn-' + id);
-  try {
-    await navigator.clipboard.writeText(body.innerText);
-    btn.textContent = '✓ Copié'; btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'Copier'; btn.classList.remove('copied'); }, 2000);
-  } catch(e) {
-    const r = document.createRange(); r.selectNodeContents(body);
-    window.getSelection().removeAllRanges(); window.getSelection().addRange(r);
-  }
+  const body=document.getElementById('body-'+id); const btn=document.getElementById('btn-'+id);
+  try { await navigator.clipboard.writeText(body.innerText); btn.textContent='✓ Copié'; btn.classList.add('copied'); setTimeout(()=>{btn.textContent='Copier';btn.classList.remove('copied');},2000); }
+  catch(e){const r=document.createRange();r.selectNodeContents(body);window.getSelection().removeAllRanges();window.getSelection().addRange(r);}
 }
-
 async function sendToBuffer() {
-  const bufferKey = document.getElementById('bufferKey').value.trim();
-  const btn = document.getElementById('sendBufferBtn');
-  const statusEl = document.getElementById('bufferStatus');
-
-  if (!bufferKey) { statusEl.textContent = 'Clé API Buffer manquante.'; statusEl.className = 'buffer-status error'; return; }
-  if (!Object.keys(generatedPosts).length) { statusEl.textContent = 'Générez d\'abord les posts.'; statusEl.className = 'buffer-status error'; return; }
-
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span>Connexion à Buffer…';
-  statusEl.textContent = 'Récupération des canaux…';
-  statusEl.className = 'buffer-status';
-
+  const bufferKey=document.getElementById('bufferKey').value.trim();
+  const btn=document.getElementById('sendBufferBtn');
+  const statusEl=document.getElementById('bufferStatus');
+  if(!bufferKey){statusEl.textContent='Clé API Buffer manquante.';statusEl.className='buffer-status error';return;}
+  if(!Object.keys(generatedPosts).length){statusEl.textContent='Générez dabord les posts.';statusEl.className='buffer-status error';return;}
+  btn.disabled=true; btn.innerHTML='<span class="spinner"></span>Connexion à Buffer…';
+  statusEl.textContent='Récupération des canaux…'; statusEl.className='buffer-status';
   try {
-    // Via proxy Vercel pour éviter CORS
-    const profilesResp = await fetch('/api/buffer', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'profiles', accessToken: bufferKey })
-    });
-    if (!profilesResp.ok) throw new Error('Clé Buffer invalide ou accès refusé.');
-    const profilesData = await profilesResp.json();
-    const profiles = Array.isArray(profilesData) ? profilesData : Object.values(profilesData);
-    if (!profiles || profiles.length === 0) throw new Error('Aucun réseau connecté dans Buffer.');
-
-    let sent = 0;
-    for (const profile of profiles) {
-      const svc = profile.service;
-      let postText = '';
-      if (svc === 'twitter') postText = document.getElementById('body-x')?.innerText || generatedPosts.x || '';
-      else if (svc === 'linkedin') postText = document.getElementById('body-linkedin')?.innerText || generatedPosts.linkedin || '';
-      else if (svc === 'instagram' || svc === 'facebook') postText = document.getElementById('body-instagram')?.innerText || generatedPosts.instagram || '';
-      else postText = document.getElementById('body-linkedin')?.innerText || generatedPosts.linkedin || '';
-      if (!postText) continue;
-
-      const r = await fetch('/api/buffer', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'post', accessToken: bufferKey, profileId: profile.id, text: postText })
-      });
-      if (r.ok) sent++;
+    const profilesResp=await fetch('/api/buffer',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'profiles',accessToken:bufferKey})});
+    if(!profilesResp.ok) throw new Error('Clé Buffer invalide.');
+    const profilesData=await profilesResp.json();
+    const profiles=Array.isArray(profilesData)?profilesData:Object.values(profilesData);
+    if(!profiles||profiles.length===0) throw new Error('Aucun réseau connecté dans Buffer.');
+    let sent=0;
+    for(const profile of profiles){
+      const svc=profile.service; let postText='';
+      if(svc==='twitter') postText=document.getElementById('body-x')?document.getElementById('body-x').innerText:generatedPosts.x||'';
+      else if(svc==='linkedin') postText=document.getElementById('body-linkedin')?document.getElementById('body-linkedin').innerText:generatedPosts.linkedin||'';
+      else if(svc==='instagram'||svc==='facebook') postText=document.getElementById('body-instagram')?document.getElementById('body-instagram').innerText:generatedPosts.instagram||'';
+      else postText=document.getElementById('body-linkedin')?document.getElementById('body-linkedin').innerText:generatedPosts.linkedin||'';
+      if(!postText) continue;
+      const r=await fetch('/api/buffer',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'post',accessToken:bufferKey,profileId:profile.id,text:postText})});
+      if(r.ok) sent++;
     }
-
-    statusEl.textContent = '✓ ' + sent + ' post(s) envoyés dans Buffer — vérifiez votre file d\'attente.';
-    statusEl.className = 'buffer-status';
-    btn.textContent = '✓ Envoyé à Buffer';
-  } catch(e) {
-    statusEl.textContent = 'Erreur Buffer : ' + e.message;
-    statusEl.className = 'buffer-status error';
-    btn.disabled = false;
-    btn.textContent = '↗ Envoyer dans Buffer';
-  }
+    statusEl.textContent='✓ '+sent+' post(s) envoyés dans Buffer.'; statusEl.className='buffer-status'; btn.textContent='✓ Envoyé à Buffer';
+  } catch(e){statusEl.textContent='Erreur Buffer : '+e.message;statusEl.className='buffer-status error';btn.disabled=false;btn.textContent='↗ Envoyer dans Buffer';}
 }
 </script>
 </body>
